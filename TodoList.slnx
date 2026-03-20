@@ -1,6 +1,10 @@
 <Solution>
+  <Folder Name="/DB/">
+    <File Path="TodoItemsDB.sql" />
+  </Folder>
   <Project Path="TodoList.Entities/TodoList.Entities.csproj" />
   <Project Path="TodoList.Infrastructure/TodoList.Infrastructure.csproj" />
+  <Project Path="TodoList.Tests/TodoList.Tests.csproj" Id="fad23610-ba26-4194-9357-fc394c1418e6" />
   <Project Path="TodoList.UseCases/TodoList.UseCases.csproj" />
   <Project Path="TodoList/TodoList.csproj" />
 </Solution>

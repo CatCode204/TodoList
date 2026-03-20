@@ -11,9 +11,11 @@ namespace TodoList.UseCases
 		IEnumerable<TodoItem> GetItems();
 		TodoItem? GetItemByID(int id);
 
-		TodoItem Add(TodoItem item);
+		TodoItem? Add(TodoItem item);
 
 		bool Update(TodoItem todoItem);
 		bool Delete(int id);
+
+		void DeleteAll();
 	}
 }

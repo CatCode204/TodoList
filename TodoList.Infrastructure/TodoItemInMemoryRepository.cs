@@ -16,7 +16,7 @@ namespace TodoList.Infrastructure
 			return todoItems.FirstOrDefault(item => item.ID == id);
 		}
 
-		public TodoItem Add(TodoItem todoItem)
+		public TodoItem? Add(TodoItem todoItem)
 		{
 			todoItem.ID = todoItems.Count;
 			todoItems.Add(todoItem);
@@ -47,6 +47,11 @@ namespace TodoList.Infrastructure
 				return true;
 			}
 			return false;
+		}
+
+		public void DeleteAll()
+		{
+			todoItems.Clear(); 
 		}
 	}
 }
