@@ -18,6 +18,7 @@ namespace TodoList.Infrastructure
 
 		public TodoItem Add(TodoItem todoItem)
 		{
+			todoItem.ID = todoItems.Count;
 			todoItems.Add(todoItem);
 			return todoItem;
 		}

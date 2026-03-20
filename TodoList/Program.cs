@@ -1,3 +1,6 @@
+using TodoList.Infrastructure;
+using TodoList.UseCases;
+
 namespace TodoList
 {
 	public class Program
@@ -8,6 +11,8 @@ namespace TodoList
 
 			// Add services to the container.
 			builder.Services.AddControllersWithViews();
+			builder.Services.AddSingleton<ITodoItemRepository, TodoItemInMemoryRepository>();
+			builder.Services.AddTransient<TodoListService>();
 
 			var app = builder.Build();
 

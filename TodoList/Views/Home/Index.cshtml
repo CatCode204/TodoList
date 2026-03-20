@@ -2,7 +2,51 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@model TodoItemCollectionModel
+
+<div class="position-fixed top-0 vw-100 vh-100 invisible" , id="add-item-container">
+    <div class="position-relative bg-black w-100 h-100">
+        <div class="d-flex align-items-center border border-3 rounded-3 position-absolute translate-middle top-50 p-2" style="left: 50%">
+            <form action="/" method="post">
+                <div class="mb-3">
+                    <label for="userInput" class="form-label">Enter the task: </label>
+                    <input type="text" class="form-control" id="userInput" name="text" placeholder="Enter task here..." required>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary"> Save </button>
+                    <button type="reset" onclick="Back()" class="btn btn-secondary"> Back </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex justify-content-center" id="add-item-container">
+    <div class="d-flex flex-column border border-2 align-items-center justify-content-around p-2 gap-2" , style="min-width: 30rem; min-height: 30rem">
+        <h1> TODO </h1>
+        <div class="overflow-auto d-flex flex-column gap-2 justify-content-center w-100" style="max-height: 400px;">
+            @if (Model.Items != null && Model.Items.Any())
+            {
+                @foreach (var item in Model.Items)
+                {
+                    if (@item.IsTaskCompleted)
+                    {
+                        <div class="bg-primary border border-1 rounded-2 d-flex justify-content-between">
+                            <div class="fw-bold text-dark pl-2">@item.Text</div>
+                            <input type="checkbox" data-id=@item.ID checked class="todo-item-statusbox" />
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="bg-secondary border border-1 rounded-2 d-flex justify-content-between">
+                            <div class="fw-bold text-dark pl-2">@item.Text</div>
+                            <input type="checkbox" data-id=@item.ID class="todo-item-statusbox"/>
+                        </div>
+                    }
+                }
+            }
+        </div>
+        <button onclick="ShowAddItemContainer()"> Add Task </button>
+    </div>
 </div>
